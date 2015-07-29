@@ -1,5 +1,10 @@
 /*************************************************** 
- 
+  Ejemplo de identificacion mediante huella digital.
+ Solamente la persona cuyo identificador de huella digital (ID)
+ seal el 1 tiene acceso al sistema y se encenderá un led amarillo,
+ para el resto de las huellas un led rojo indicara que no tienen
+ acceso. El monitor serie indicara el nombre de la persona con acceso
+ permitido.
  ****************************************************/
 int verde = 6; // Conectar salida digital 6 a led verde
 int rojo = 7; // Conectar salida digital 7 a led rojo
@@ -19,6 +24,8 @@ Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 void setup()  
 {
   Serial.begin(9600);
+  pinMode(verde, OUTPUT);
+  pinMode(rojo, OUTPUT);
   Serial.println("fingertest");
 
   // set the data rate for the sensor serial port
